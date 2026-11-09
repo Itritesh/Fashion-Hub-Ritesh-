@@ -1,0 +1,49 @@
+# Fashion Hub Backend Setup
+
+This backend provides Razorpay payment integration for the Fashion Hub e-commerce app.
+
+## Setup Instructions
+
+1. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Configure Environment Variables:**
+   - Copy `.env` file
+   - Add your Razorpay credentials:
+     ```
+     RAZORPAY_KEY_ID=rzp_test_your_key_id_here
+     RAZORPAY_KEY_SECRET=your_secret_key_here
+     ```
+   - Get these keys from [Razorpay Dashboard](https://dashboard.razorpay.com/)
+
+3. **Run the Server:**
+   ```bash
+   npm start
+   ```
+
+4. **Test Endpoints:**
+   - Health: `GET http://localhost:3000/health`
+   - Config: `GET http://localhost:3000/api/config`
+   - Create Order: `POST http://localhost:3000/api/create-order` with `{ "amount": 100 }`
+   - Verify Payment: `POST http://localhost:3000/api/verify-payment` with payment details
+
+## Deployment to Railway
+
+1. Push this code to GitHub
+2. Connect to Railway
+3. Set environment variables in Railway dashboard:
+   - `RAZORPAY_KEY_ID`
+   - `RAZORPAY_KEY_SECRET`
+   - `NODE_ENV=production`
+   - `PORT=3000`
+
+4. Update `backend.js` API URL back to your Railway URL
+
+## API Endpoints
+
+- `GET /health` - Health check
+- `GET /api/config` - Get Razorpay config
+- `POST /api/create-order` - Create payment order
+- `POST /api/verify-payment` - Verify payment
